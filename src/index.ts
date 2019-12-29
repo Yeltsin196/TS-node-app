@@ -1,6 +1,7 @@
 import express from 'express';
 import exphbs from 'express-handlebars';
 import path from 'path';
+import IndexRoutes from './routes';
 const app = express();
 
 
@@ -13,9 +14,14 @@ app.engine('.hbs', exphbs({
     helpers:require('./lib/helpers'),
 }));
 app.set('view engine','.hbs');
+
+//routes 
+app.use('/books', IndexRoutes);
 //middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+
+app.use(express.static(path.join(__dirname,'public')));
 
 
 app.listen(app.get('port'), ()=> 
