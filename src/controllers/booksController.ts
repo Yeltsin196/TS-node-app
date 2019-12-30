@@ -6,8 +6,11 @@ class BooksController{
     res.render('books/add',{title:'welcome'});
     }
 
-    public indexBook(req:Request,res:Response){
-        res.render('books/index',{title:'libros'});
+    public async indexBook(req:Request,res:Response):Promise<void>{
+       const books : Book[]= await BookModel.find();
+        res.render('books/index',{
+            title:'libros',
+            books});
         }
 
         public async saveBook(req:Request,res:Response){
