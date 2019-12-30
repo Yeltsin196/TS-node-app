@@ -4,10 +4,11 @@ import path from 'path';
 import IndexRoutes from './routes/index';
 import booksRoutes from './routes/books';
 
-const app = express();
-
 import bodyParser from 'body-parser';
+import './database';
 
+
+const app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views',path.join(__dirname, 'views'));
 app.engine('.hbs', exphbs({
