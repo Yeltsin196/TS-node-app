@@ -9,9 +9,10 @@ app.set('port', process.env.PORT || 3000);
 app.set('views',path.join(__dirname, 'views'));
 app.engine('.hbs', exphbs({
     extname:'.hbs',
-    layoutsDir:path.join(__dirname,'views/partials'),
+    layoutsDir:path.join(__dirname,'views/layouts'),
     partialsDir:path.join(__dirname,'views/partials'),
     helpers:require('./lib/helpers'),
+    defaultLayout:'main',
 }));
 app.set('view engine','.hbs');
 
